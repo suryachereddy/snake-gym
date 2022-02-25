@@ -21,7 +21,7 @@ class SnakeEnv(gym.Env):
         self.action_space = spaces.Discrete(3)
         self.observation_space = spaces.Box(
             dtype=np.float32,
-            low=np.array([0, 0, 0, -1, -1]),
+            low=np.array([-1, -1, -1, -1, -1]),
             high=np.array([1, 1, 1, 1, 1]),
         )
 
