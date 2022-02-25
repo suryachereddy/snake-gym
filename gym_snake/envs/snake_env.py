@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 class SnakeEnv(gym.Env):
     metadata = {'render.modes': ['human']}
 
-    def __init__(self, env_config,blocks=10, block_size=50):
+    def __init__(self, env_config=None,blocks=10, block_size=50):
         self.blocks = blocks
         self.width = block_size * blocks
         self.snake = None
