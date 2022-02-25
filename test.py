@@ -2,11 +2,11 @@ import argparse
 from time import sleep
 import gym
 import gym_snake
-from rl.model import DQN
-import torch
+#from rl.model import DQN
+#import torch
 import numpy as np
 
-
+"""
 class Agent:
     def __init__(self, state_size, action_size, pth_path, seed):
         self.model = DQN(state_size, action_size, seed)
@@ -19,12 +19,12 @@ class Agent:
             action_values = self.model(state)
 
         return np.argmax(action_values.data.numpy())
-
+"""
 
 def main(load_path, render, times, seed, block_size, blocks):
     env = get_env(seed, block_size, blocks)
-    agent = Agent(env.observation_space.shape[0], env.action_space.n, load_path, seed)
-    watch_agent(agent, env, times, render)
+    #agent = Agent(env.observation_space.shape[0], env.action_space.n, load_path, seed)
+    watch_agent( env, times, render)
 
 
 def get_env(seed, block_size, blocks):
@@ -33,7 +33,7 @@ def get_env(seed, block_size, blocks):
     return env
 
 
-def watch_agent(agent, env, times, render):
+def watch_agent(env, times, render):
     scores = []
     apples = []
 
@@ -46,7 +46,7 @@ def watch_agent(agent, env, times, render):
             if render:
                 env.render()
                 sleep(0.05)
-            action = agent.act(state)
+            action = env.action_space.sample()
             state, reward, done, info = env.step(action)
             score += reward
             if done:
